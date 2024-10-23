@@ -1,70 +1,101 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Book Store Web Application
+
+This project is a simple web application that displays a list of book stores and their best-selling books. The app fetches data from a backend API, including information about stores, books, authors, and countries. It also fetches country flags dynamically from an external API (RestCountries) based on the ISO 3166-1 country code.
+
+## Features
+
+- Displays book stores with their rating, establishment date, and website.
+- Fetches and displays the top-selling books for each store, along with their authors.
+- Shows the country flag based on the store's country code.
+- Star rating system for stores.
+
+## Prerequisites
+
+To run this project locally, you'll need to have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/en/download/) (version 12 or higher)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js) or [yarn](https://yarnpkg.com/getting-started)
+
+## Backend API
+
+The backend API provides data for stores, books, authors, and countries. The project assumes the backend is running at `http://localhost:3000`. Make sure the backend API is up and running before starting the frontend.
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/book-store-app.git
+cd book-store-app
+```
+
+### 2. Install Dependencies
+
+Make sure you install all the dependencies for the project using `npm` or `yarn`.
+
+```bash
+npm install
+# OR
+yarn install
+```
+
+### 3. Start the Development Server
+
+Once dependencies are installed, you can start the React development server. This will also proxy requests to the backend API running on `localhost:5001`.
+
+```bash
+npm start
+# OR
+yarn start
+```
+
+The application will be available at `http://localhost:5001` in your browser.
+
+### 4. Ensure the Backend is Running
+
+The frontend application relies on a backend API for data. Ensure that the backend server is running and provides the necessary data at the following endpoints:
+
+- `/stores`: Provides store information.
+- `/books`: Provides book information.
+- `/authors`: Provides author information.
+- `/countries`: Provides country information with country codes.
+
+You can run the backend API using Node.js. If you're using a mock backend server like `json-server` or a custom Express server, ensure it’s running on port `3000` or adjust the proxy configuration in the `package.json` file.
+
+### 5. Country Flag Fetching
+
+The application fetches country flags dynamically from the RestCountries API based on the 2-letter ISO 3166-1 country code.
+
+- API Endpoint: `https://restcountries.com/v2/alpha/{country_code}`
+- If you encounter issues with this API, you can modify the `fetchFlag` function to use a different API, such as `https://countryflagsapi.com/`.
+
+## Project Structure
+
+Here’s an overview of the project structure:
+
+```
+.
+├── public
+│   └── index.html           # Main HTML file
+├── src
+│   ├── components           # UI components
+│   ├── App.js               # Main application logic
+│   ├── index.js             # Entry point
+│   └── styles.css           # Stylesheet
+├── package.json             # Project configuration and dependencies
+└── README.md                # Project documentation
+```
+
+## Key Files
+
+- **App.js**: Main component of the application where the stores, books, and country data are fetched and displayed. Contains helper functions like `getStoreBooks`, `getBookAuthor`, and `fetchFlag`;Including reusable UI components like `StarRating` and store details components.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run the following commands:
 
-### `npm start`
+- **`npm start`**: Runs the app in the development mode.
+- **`npm test`**: Launches the test runner in interactive watch mode.
+- **`npm run build`**: Builds the app for production.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
