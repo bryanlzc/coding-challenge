@@ -79,7 +79,6 @@ Here’s an overview of the project structure:
 ├── public
 │   └── index.html           # Main HTML file
 ├── src
-│   ├── components           # UI components
 │   ├── App.js               # Main application logic
 │   ├── index.js             # Entry point
 │   └── styles.css           # Stylesheet
