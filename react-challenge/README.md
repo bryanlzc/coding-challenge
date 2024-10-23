@@ -1,82 +1,101 @@
-## Squirro Frontend Coding Challenge
 
-Welcome to the Squirro coding challenge! Your task is to create an APP that lists the best-selling books for each book store. 
+# Book Store Web Application
 
-This repo contains a JSON:API based application which provides the data for the book stores. This API can be found in the `book-store-api` folder. Within the section below you will find more information on how to run/use `book-store-api`.
+This project is a simple web application that displays a list of book stores and their best-selling books. The app fetches data from a backend API, including information about stores, books, authors, and countries. It also fetches country flags dynamically from an external API (RestCountries) based on the ISO 3166-1 country code.
 
-Your goal is to present the data (that you receive from the API) as shown in the wireframe:
+## Features
 
-![Screenshot](wireframe.png)
+- Displays book stores with their rating, establishment date, and website.
+- Fetches and displays the top-selling books for each store, along with their authors.
+- Shows the country flag based on the store's country code.
+- Star rating system for stores.
 
+## Prerequisites
 
+To run this project locally, you'll need to have the following installed on your machine:
 
-#### Each circle marker represents a specific task:
-1. Circle with the Book store image.
-2. List with a maximum of 2 books ordered by the number of copies sold. In case there are no books, please display a "No data available" message.
-3. Book store rating represented in stars.
-4. Book store establishment date in DD.MM.YYYY format and website link. The API will return the date in ISO 8601 format.
-5. Book store country flag image. The Book store API will only return a 2-letter ISO 3166-1 country code. Please use https://restcountries.eu/ API to get the flag image for each country code to display. In the event of unavailability of this API, please use any other equivalent API of your choice.
+- [Node.js](https://nodejs.org/en/download/) (version 12 or higher)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js) or [yarn](https://yarnpkg.com/getting-started)
 
-**You should follow the wireframe positioning of elements, but you can make it a bit prettier ;)**
+## Backend API
 
-### Book Store API
+The backend API provides data for stores, books, authors, and countries. The project assumes the backend is running at `http://localhost:3000`. Make sure the backend API is up and running before starting the frontend.
 
-JSON:API is a specification on how a client should perform requests that fetch or modify resources, and how a server should respond to those requests.
-You can find the JSON:API documentation on this link https://jsonapi.org/format/ but we will explain to you some of the basics here to make it easier for you. 
+## Getting Started
 
-The Book store API contains the `stores`, `books`, `countries`, and `authors` resources. Each of the resources can have an attributes object and a relationship object describing relationships between the resource and other resources.
+### 1. Clone the Repository
 
-**Breakdown of resources and their relationships:** 
+```bash
+git clone https://github.com/your-username/book-store-app.git
+cd book-store-app
+```
 
-- Stores
-    - Attributes:
-        - `name`
-        - `website`
-        - `rating`
-        - `image`
-        - `establishmentDate`
-    - Relationships
-        - `books`
-        - `countries`
-- Books
-    - Attributes:
-        - `name`
-        - `copiesSold`
-    - Relationships
-        - `authors`
-- Countries
-    - Attributes:
-        - `code`
-- Authors
-    - Attributes:
-        - `fullName`
-        
-The API endpoint that you will need for most of the tasks is: `http://localhost:3000/stores`. This endpoint will return all store resources and related resources within `included` array.
-If you need any other endpoint, check the JSON:API specification. 
+### 2. Install Dependencies
 
-#### Running API:
-- Clone this repo locally
-- `cd` inside `book-store-api` folder and run `npm install`
-- Serve it on the port 3000 by running `npm run start`
+Make sure you install all the dependencies for the project using `npm` or `yarn`.
 
-#### Commiting:
-- Please do not open pull requests against our repository!
-- Instead, create your repository and send that over
+```bash
+npm install
+# OR
+yarn install
+```
 
-#### Rules
-- You should use React as your main framework.
-- Don't use JSON:API response normalizer libraries, do it yourself.
-- The project startup procedure must be documented.
-- Javascript should be written in ES6 or above (TypeScript is welcomed).
-- GIT history must be clean.
-- Application presentation must be done by responsive web design principles.
-- Write CSS from scratch, please do not use Bootstrap, Material UI, and similar.
+### 3. Start the Development Server
 
-#### Happy coding and thank you for applying to Squirro!
+Once dependencies are installed, you can start the React development server. This will also proxy requests to the backend API running on `localhost:5001`.
 
-                
+```bash
+npm start
+# OR
+yarn start
+```
 
+The application will be available at `http://localhost:5001` in your browser.
 
+### 4. Ensure the Backend is Running
 
+The frontend application relies on a backend API for data. Ensure that the backend server is running and provides the necessary data at the following endpoints:
 
+- `/stores`: Provides store information.
+- `/books`: Provides book information.
+- `/authors`: Provides author information.
+- `/countries`: Provides country information with country codes.
+
+You can run the backend API using Node.js. If you're using a mock backend server like `json-server` or a custom Express server, ensure it’s running on port `3000` or adjust the proxy configuration in the `package.json` file.
+
+### 5. Country Flag Fetching
+
+The application fetches country flags dynamically from the RestCountries API based on the 2-letter ISO 3166-1 country code.
+
+- API Endpoint: `https://restcountries.com/v2/alpha/{country_code}`
+- If you encounter issues with this API, you can modify the `fetchFlag` function to use a different API, such as `https://countryflagsapi.com/`.
+
+## Project Structure
+
+Here’s an overview of the project structure:
+
+```
+.
+├── public
+│   └── index.html           # Main HTML file
+├── src
+│   ├── components           # UI components
+│   ├── App.js               # Main application logic
+│   ├── index.js             # Entry point
+│   └── styles.css           # Stylesheet
+├── package.json             # Project configuration and dependencies
+└── README.md                # Project documentation
+```
+
+## Key Files
+
+- **App.js**: Main component of the application where the stores, books, and country data are fetched and displayed. Contains helper functions like `getStoreBooks`, `getBookAuthor`, and `fetchFlag`;Including reusable UI components like `StarRating` and store details components.
+
+## Available Scripts
+
+In the project directory, you can run the following commands:
+
+- **`npm start`**: Runs the app in the development mode.
+- **`npm test`**: Launches the test runner in interactive watch mode.
+- **`npm run build`**: Builds the app for production.
 
