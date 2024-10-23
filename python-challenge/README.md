@@ -75,7 +75,7 @@ Modify the `query here` as needed.
    After configuring the script and ensuring the environment is set up, you can run the script using:
 
    ```bash
-   python3 your_script.py
+   python3 script.py
    ```
 
    The script will fetch articles in batches (as defined in the script) and output the article IDs and their main headlines.
