@@ -1,9 +1,11 @@
 import argparse
 import logging
 import requests
+from dotenv import load_dotenv
+import os
 
 """
-Skeleton for Squirro Delivery Hiring Coding Challenge
+Skeleton for Coding Challenge
 January 2024
 """
 
@@ -121,8 +123,9 @@ class NYTimesSource(object):
 
 
 if __name__ == "__main__":
+    load_dotenv()
     config = {
-        "api_key": "s9GfGCYkl913tFQv0Fujup2vzYTagXZt",
+        "api_key": f"{os.getenv('API_KEY')}",
         "query": "Silicon Valley",
     }
     source = NYTimesSource()

@@ -1,11 +1,11 @@
-react-challenge/book-store-api/node_modules/
-react-challenge/frontend/node_modules/
-python-challenge/venv/
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
+react-challenge/book-store-api/node_modules/
+react-challenge/frontend/node_modules/
+python-challenge/.venv/
+python-challenge/.env
 /.pnp
 .pnp.js
 
